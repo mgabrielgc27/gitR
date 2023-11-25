@@ -15,6 +15,7 @@ public abstract class PlanetasLinguagens {
 	protected int quantColisoesComBugs = 0;
 	protected int quantColisoesComDevs = 0;
 	protected int deslocamentoTotal = 0;
+	protected int instantesTotais = 0;
 	protected boolean explodiu = false;
 	protected String informacoes;
 	
@@ -25,6 +26,7 @@ public abstract class PlanetasLinguagens {
 
 	public void rotacionar(int tempo) {
 		horasPassadas += (velocidadeRotacao * tempo);
+		instantesTotais += tempo;
 	}
 
 	public void translacionar(int tempo) {
@@ -155,6 +157,10 @@ public abstract class PlanetasLinguagens {
 
 	public ImageIcon getIcon() {
 		return icon;
+	}
+
+	public int getInstantesTotais() {
+		return instantesTotais;
 	}
 	
 }

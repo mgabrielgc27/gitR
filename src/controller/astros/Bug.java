@@ -15,33 +15,31 @@ import controller.planetas.PlanetasLinguagens;
 
 	public void modificarVelocidade(ArrayList<PlanetasLinguagens> planetas) {
 		
-//		for (PlanetasLinguagens p : planetas) {
-//			
-//			if (posicaoX == p.getPosicaoX() && posicaoY == p.getPosicaoY()) {
-//				
-//				if (colidiu == false) {
-//					
-//					p.setQuantColisoesComBugs(p.getQuantColisoesComBugs() + 1);
-//					System.out.println(
-//							"BUG colidiu com " + p.getNome() + " na posição (" + posicaoX + ", " + posicaoY + ") ");
-//					System.out.println(p.getNome() + " perdeu velocidade!");
-//					p.setVelocidade(p.getVelocidade() - 1);
-//					colidiu = true;
-//					
-//					if (p.getVelocidade() <= 0) {
-//						
-//						p.setExplodiu(true);
-//						System.out.println(p.getNome() + " EXPLODIU!");
-//						p.setPosicaoX(-1);
-//						p.setPosicaoY(-1);
-//						
-//					}
-//					
-//				}
-//				
-//			}
-//			
-//		}
+		for (PlanetasLinguagens p : planetas) {
+			
+			if (posicaoX == p.getPosicaoX() && posicaoY == p.getPosicaoY() && !p.isExplodiu()) {
+				
+				if (colidiu == false) {
+					
+					p.setQuantColisoesComBugs(p.getQuantColisoesComBugs() + 1);
+					System.out.println(
+							"BUG colidiu com " + p.getNome() + " na posição (" + posicaoX + ", " + posicaoY + ") ");
+					System.out.println(p.getNome() + " perdeu velocidade!");
+					p.setVelocidade(p.getVelocidade() - 1);
+					colidiu = true;
+					
+					if (p.getVelocidade() <= 0) {
+						
+						p.setExplodiu(true);
+						System.out.println(p.getNome() + " EXPLODIU!");
+						
+					}
+					
+				}
+				
+			}
+			
+		}
 		
 	}
 	

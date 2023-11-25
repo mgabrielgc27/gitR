@@ -18,11 +18,18 @@ public class Rodada {
 		java = j;
 		dadosDaRodada = dados;
 		
-		quantBugs = Integer.valueOf(dados[8]);
-		quantDevs = Integer.valueOf(dados[9]);
+		try {
+			quantBugs = Integer.valueOf(dadosDaRodada[8]);
+			quantDevs = Integer.valueOf(dadosDaRodada[9]);
 		
-		adicionarAstros();
-		java.movimentarPlanetas(dadosDaRodada);
+			
+			adicionarAstros();
+			java.movimentarPlanetas(dadosDaRodada);
+		} catch (Exception e) {
+			
+		}
+		
+		java.verificarColisoes();
 	}
 
 	public void adicionarAstros() {

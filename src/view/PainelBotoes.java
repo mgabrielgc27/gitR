@@ -64,7 +64,7 @@ public class PainelBotoes extends JPanel{
 		botaoGravarRelatorio.addActionListener(new ActionListener() {
 	
 			public void actionPerformed(ActionEvent e) {
-		
+				memoria.gravarRelatorio();
 			}
 		});
 		botaoLerDadosOutrosParticipantes.addActionListener(new ActionListener() {

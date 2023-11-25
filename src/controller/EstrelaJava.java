@@ -18,7 +18,6 @@ public class EstrelaJava {
 	protected String nome = "JAVA";
 	protected int posicaoX = 7;
 	protected int posicaoY = 7;
-	protected int tempoTotal = 0;
 	protected ArrayList<PlanetasLinguagens> planetas = new ArrayList<PlanetasLinguagens>();
 	protected ArrayList<Astros> astros = new ArrayList<Astros>();
 
@@ -32,18 +31,18 @@ public class EstrelaJava {
 		planetas.add(new C("C", 7));
 	}
 	
-	public boolean verificarSeTodosExplodiram() {
-		boolean todosMortos = false;
-		for (PlanetasLinguagens p : planetas) {
-			if(p.isExplodiu())
-				todosMortos = true;
-			else
-				todosMortos = false;
-		}
-		if(todosMortos)
-			System.out.println("Todos os planetas EXPLODIRAM.\n");
-		return todosMortos;		
-	}
+//	public boolean verificarSeTodosExplodiram() {
+//		boolean todosMortos = false;
+//		for (PlanetasLinguagens p : planetas) {
+//			if(p.isExplodiu())
+//				todosMortos = true;
+//			else
+//				todosMortos = false;
+//		}
+//		if(todosMortos)
+//			System.out.println("Todos os planetas EXPLODIRAM.\n");
+//		return todosMortos;		
+//	}
 
 	public void verificarColisoes() {
 		excluirCorposNulos();
@@ -53,6 +52,12 @@ public class EstrelaJava {
 	}
 
 	private void excluirCorposNulos() {
+//		for (int i = 0; i < planetas.size(); i++) {
+//			if(planetas.get(i).isExplodiu())
+//				copiaPlanetasMortos.add(planetas.get(i));
+//				planetas.remove(i);
+//		}
+		
 		for (int i = 0; i < astros.size(); i++) {
 			if (astros.get(i).isColidiu())
 				astros.remove(i);
@@ -60,64 +65,66 @@ public class EstrelaJava {
 	}
 
 	public void movimentarPlanetas(String[] instantes) {
-		
+		 
 		for (int i = 0; i < planetas.size(); i++) {
-			planetas.get(i).translacionar(Integer.valueOf(instantes[(i+1)]));
+			if(!planetas.get(i).isExplodiu())
+				planetas.get(i).rotacionar(Integer.valueOf(instantes[(i+1)]));
+				planetas.get(i).translacionar(Integer.valueOf(instantes[(i+1)]));
 		}
 		
-		for (PlanetasLinguagens p : planetas) {
-			System.out.println(p.getNome()+": "+p.getPosicaoX()+", "+p.getPosicaoY());
-		}
-		System.out.println();
+//		for (PlanetasLinguagens p : planetas) {
+//			System.out.println(p.getNome()+": "+p.getPosicaoX()+", "+p.getPosicaoY());
+//		}
+//		System.out.println();
 			
 	}
 
-	public boolean verificarAlinhamentoVertical() {
-		for (PlanetasLinguagens p : planetas) {
-			if (p.getPosicaoY() != 8)
-				return false;
-		}
-		return true;
-	}
+//	public boolean verificarAlinhamentoVertical() {
+//		for (PlanetasLinguagens p : planetas) {
+//			if (p.getPosicaoY() != 8)
+//				return false;
+//		}
+//		return true;
+//	}
 
 	public ImageIcon getIcon() {
 		return icon;
 	}
 
-	public boolean verificarAlinhamentoDiagonalSecundadaria() {
-		for (PlanetasLinguagens p : planetas) {
-			if (p.getPosicaoX() != p.getPosicaoY())
-				return false;
-		}
-		return true;
-	}
+//	public boolean verificarAlinhamentoDiagonalSecundadaria() {
+//		for (PlanetasLinguagens p : planetas) {
+//			if (p.getPosicaoX() != p.getPosicaoY())
+//				return false;
+//		}
+//		return true;
+//	}
 
-	public boolean verificarAlinhamentoDiagonalPrincipal() {
-		for (PlanetasLinguagens p : planetas) {
-			if (p.getPosicaoY() != (16 - p.getPosicaoX()))
-				return false;
-		}
-		return true;
-	}
+//	public boolean verificarAlinhamentoDiagonalPrincipal() {
+//		for (PlanetasLinguagens p : planetas) {
+//			if (p.getPosicaoY() != (16 - p.getPosicaoX()))
+//				return false;
+//		}
+//		return true;
+//	}
 
-	public void calcularDistanciaEntreOsPlanetas() {
-		float ladoX;
-		float ladoY;
-		int aux = 1;
-		for (int i = 0; i < planetas.size(); i++) {
-				for (int j = aux; j < planetas.size(); j++) {
-					ladoX = (Math.abs(planetas.get(i).getPosicaoX() - planetas.get(j).getPosicaoX()) + 1);
-					ladoY = (Math.abs(planetas.get(i).getPosicaoY() - planetas.get(j).getPosicaoY()) + 1);
-					int area = (int) (ladoX * ladoY);
-					float distancia = (float) Math.sqrt(Math.pow(ladoX, 2) + Math.pow(ladoY, 2));
-					System.out.print("Distância entre " + planetas.get(i).getNome() + " e " + planetas.get(j).getNome()
-							+ ": " + area);
-					System.out.println("  -  Distância EUCLIDIANA: " + distancia + "");
-				}
-				aux++;
-		}
-		System.out.println();
-	}
+//	public void calcularDistanciaEntreOsPlanetas() {
+//		float ladoX;
+//		float ladoY;
+//		int aux = 1;
+//		for (int i = 0; i < planetas.size(); i++) {
+//				for (int j = aux; j < planetas.size(); j++) {
+//					ladoX = (Math.abs(planetas.get(i).getPosicaoX() - planetas.get(j).getPosicaoX()) + 1);
+//					ladoY = (Math.abs(planetas.get(i).getPosicaoY() - planetas.get(j).getPosicaoY()) + 1);
+//					int area = (int) (ladoX * ladoY);
+//					float distancia = (float) Math.sqrt(Math.pow(ladoX, 2) + Math.pow(ladoY, 2));
+//					System.out.print("Distância entre " + planetas.get(i).getNome() + " e " + planetas.get(j).getNome()
+//							+ ": " + area);
+//					System.out.println("  -  Distância EUCLIDIANA: " + distancia + "");
+//				}
+//				aux++;
+//		}
+//		System.out.println();
+//	}
 
 	public int getPosicaoX() {
 		return posicaoX;

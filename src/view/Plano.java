@@ -71,7 +71,8 @@ public class Plano extends JPanel{
 		}
 		
 		for (PlanetasLinguagens p : planetasLinguagens) {
-			pontoPlano[p.getPosicaoX()][p.getPosicaoY()].setIcon(redimencionarImagens(p.getIcon()));
+			if(!p.isExplodiu())
+				pontoPlano[p.getPosicaoX()][p.getPosicaoY()].setIcon(redimencionarImagens(p.getIcon()));
 		}
 		
 	}
